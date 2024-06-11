@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        exclude: (.txt$|README.md$)
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--enforce-all --maxkb=50000]
+      - id: detect-private-key
+      - id: check-case-conflict
+      - id: check-symlinks
+      - id: check-docstring-first
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: destroyed-symlinks
+      - id: debug-statements
+      - id: pretty-format-json
+        args: [--autofix]
+      - id: no-commit-to-branch
+        args: [--branch, main]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.28.5
+    hooks:
+      - id: check-github-workflows
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: []
